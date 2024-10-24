@@ -1,12 +1,15 @@
 <h1 align="center"><a href="https://github.com/ronknight/InventorySystem">Inventory Management System</a></h1>
-<h4 align="center">An Inventory System using Bootstrap, JavaScript, MySQL & PHP</h4>
 
-<p align="center">
-  <img src="https://upload.wikimedia.org/wikipedia/commons/b/b2/Bootstrap_logo.svg" alt="Bootstrap" width="50" height="50"/>
-  <img src="https://upload.wikimedia.org/wikipedia/commons/6/6a/JavaScript-logo.png" alt="JavaScript" width="50" height="50"/>
-  <img src="https://upload.wikimedia.org/wikipedia/commons/6/62/MySQL.svg" alt="MySQL" width="50" height="50"/>
-  <img src="https://upload.wikimedia.org/wikipedia/commons/2/27/PHP-logo.svg" alt="PHP" width="50" height="50"/>
-</p>
+<h3 align="center">
+  <img
+    alt="Image of a keycap with the letter K on it in pink tones"
+    title="Kanata"
+    height="160"
+    src="design/images/favicon/android-chrome-512x512.png"
+  />
+</h3>
+
+<h4 align="center">An Inventory System using Bootstrap, JavaScript, MySQL & PHP</h4>
 
 # Inventory Management System
 
@@ -29,6 +32,7 @@ This Inventory Management System allows you to efficiently manage products, user
 ![Home Page2](screenshots/2_page_accueil.jpg)
 ![Home Page3](screenshots/3_page_accueil.png)
 ![Home Page4](screenshots/4_page_accueil.jpg)
+![Home Page5](screenshots/5_page_accueil.png)
 
 ### Login Page
 ![Login Page](screenshots/6_page_de_connexion.png)
@@ -87,7 +91,7 @@ Admin User :
 
 ## Requirements
 
-- **PHP** version 8.0.0 or newer (recommended).
+- **PHP** version 8.0.0 or newer.
 - **Database**: MySQL or compatible.
 - **Application Server**: Choose from LAMP, MAMP, or XAMPP.
 
