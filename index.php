@@ -140,8 +140,6 @@ body, html {
       <h5>Provider Management</h5>
       <p class="me-text-grey">Admins can also manage the list of providers for the inventory system.</p><br>
     </div>  
-    <img src="design/images/tableau_bord.jpg" style="width:100%;max-width:1000px;margin-top:32px; border: 1px solid black;
-">
   </div>
 </div>
 </div>
