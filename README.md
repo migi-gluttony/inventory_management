@@ -17,11 +17,12 @@ This Inventory Management System allows you to efficiently manage products, user
 ### Main Page 
 
 ![Main Page 1](screenshots/page_accueil_1.png)
+
 ![Main Page 2](screenshots/page_accueil_2.png)
 
 
 ### Login
-![Login](screenshots/page_de_connexion.jpg)
+![Login](screenshots/page_de_connexion.png)
 
 
 ### Dashboard
