@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Oct 12, 2024 at 08:13 PM
+-- Generation Time: Oct 24, 2024 at 03:51 AM
 -- Server version: 10.4.32-MariaDB
 -- PHP Version: 8.2.12
 
@@ -232,14 +232,8 @@ CREATE TABLE `users` (
 --
 
 INSERT INTO `users` (`id`, `name`, `password_hash`, `email`, `date_added`, `date_modified`, `is_admin`) VALUES
-(29, 'Admin User', '$2y$10$92IXUNpkjO0rOQ5byMi.Ye4oKoEa3Ro9llC/.og/at2.uheWG/igi', 'admin@example.com', '2024-10-09 18:11:40', '2024-10-09 18:11:40', 1),
-(30, 'Alice Johnson', '$2y$10$92IXUNpkjO0rOQ5byMi.Ye4oKoEa3Ro9llC/.og/at2.uheWG/igi', 'alice@example.com', '2024-10-09 18:11:40', '2024-10-09 18:11:40', 0),
-(31, 'Bob Roberts', '$2y$10$92IXUNpkjO0rOQ5byMi.Ye4oKoEa3Ro9llC/.og/at2.uheWG/igi', 'bob@example.com', '2024-10-09 18:11:40', '2024-10-09 18:11:40', 0),
-(32, 'Charlie Brown', '$2y$10$92IXUNpkjO0rOQ5byMi.Ye4oKoEa3Ro9llC/.og/at2.uheWG/igi', 'charlie@example.com', '2024-10-09 18:11:40', '2024-10-09 18:11:40', 0),
-(33, 'Diana Prince', '$2y$10$92IXUNpkjO0rOQ5byMi.Ye4oKoEa3Ro9llC/.og/at2.uheWG/igi', 'diana@example.com', '2024-10-09 18:11:40', '2024-10-09 18:11:40', 1),
-(34, 'Eve Adams', '$2y$10$92IXUNpkjO0rOQ5byMi.Ye4oKoEa3Ro9llC/.og/at2.uheWG/igi', 'eve@example.com', '2024-10-09 18:11:40', '2024-10-09 18:11:40', 0),
-(35, 'Frank Wright', '$2y$10$92IXUNpkjO0rOQ5byMi.Ye4oKoEa3Ro9llC/.og/at2.uheWG/igi', 'frank@example.com', '2024-10-09 18:11:40', '2024-10-09 18:11:40', 0),
-(36, 'Grace Hopper', '$2y$10$92IXUNpkjO0rOQ5byMi.Ye4oKoEa3Ro9llC/.og/at2.uheWG/igi', 'grace@example.com', '2024-10-09 18:11:40', '2024-10-09 18:11:40', 1);
+(29, 'Admin User', '$2y$10$PGmTruQD2abK3KYzZfP4IeQ0OhMyzlx5TeIcoKAuhYK/yeCj5ZbvS', 'admin@example.com', '2024-10-09 18:11:40', '2024-10-24 02:45:08', 1),
+(30, 'Mohamed', '$2y$10$92IXUNpkjO0rOQ5byMi.Ye4oKoEa3Ro9llC/.og/at2.uheWG/igi', 'mohamed@example.com', '2024-10-09 18:11:40', '2024-10-24 02:45:43', 0);
 
 --
 -- Indexes for dumped tables
