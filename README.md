@@ -1,10 +1,20 @@
+<h1 align="center"><a href="https://github.com/ronknight/InventorySystem">Inventory Management System</a></h1>
+<h4 align="center">An Inventory System using Bootstrap, JavaScript, MySQL & PHP</h4>
+
+<p align="center">
+  <img src="https://upload.wikimedia.org/wikipedia/commons/b/b2/Bootstrap_logo.svg" alt="Bootstrap" width="50" height="50"/>
+  <img src="https://upload.wikimedia.org/wikipedia/commons/6/6a/JavaScript-logo.png" alt="JavaScript" width="50" height="50"/>
+  <img src="https://upload.wikimedia.org/wikipedia/commons/6/62/MySQL.svg" alt="MySQL" width="50" height="50"/>
+  <img src="https://upload.wikimedia.org/wikipedia/commons/2/27/PHP-logo.svg" alt="PHP" width="50" height="50"/>
+</p>
+
 # Inventory Management System
 
 This Inventory Management System allows you to efficiently manage products, users, and providers. It provides comprehensive features for inventory tracking, user management, and report generation using a clean, user-friendly interface.
 
 ## Features
 
-- **Normal and Admin Users**: Each user type has different privileges, with admin users having full access to user and providers management , and the normal user can do everything else.
+- **Normal and Admin Users**: Each user type has different privileges, with admin users having full access to user and provider management, while normal users can manage everything else.
 - **Dashboard**: Provides an overview of key metrics, such as total products, total stock, and total users.
 - **Product Management**: Add, edit, or delete products from the system.
 - **Product Recycle Bin**: Restore products or permanently delete them from the system.
@@ -14,41 +24,39 @@ This Inventory Management System allows you to efficiently manage products, user
 
 ## Screenshots
 
-### Main Page 
+### Home Page
+![Home Page1](screenshots/1_page_accueil.jpg)
+![Home Page2](screenshots/2_page_accueil.jpg)
+![Home Page3](screenshots/3_page_accueil.png)
+![Home Page4](screenshots/4_page_accueil.jpg)
 
-![Main Page 1](screenshots/page_accueil_1.png)
-
-![Main Page 2](screenshots/page_accueil_2.png)
-
-
-### Login
-![Login](screenshots/page_de_connexion.png)
+### Login Page
+![Login Page](screenshots/6_page_de_connexion.png)
 
 
 ### Dashboard
-![Dashboard](screenshots/tableau_bord.jpg)
-
+![Dashboard](screenshots/7_tableau_bord.jpg)
 
 ### Product Management
-![Products 1](screenshots/page_produits.jpg)
-![Products 2](screenshots/formulaire_modification.jpg)
+![Products Page](screenshots/8_page_produits.jpg)
+![Edit Product](screenshots/9_formulaire_modification.jpg)
+![Add Product](screenshots/10_page_ajout_produit.jpg)
 
+### Product Recycle Bin
+![Deleted Products](screenshots/11_page_produits_supprimes.jpg)
 
-### Add Product
-![Add Product](screenshots/page_ajout_produit.jpg)
+### Reports
+![Reports Page](screenshots/13_page_rapports.jpg)
+![Print Interface](screenshots/12_interface_impression.jpg)
 
+### Admin Options
+![Admin Choices](screenshots/14_admin_choix.jpg)
+
+### User Management
+![Manage Users](screenshots/15_gestion_utilisateurs.jpg)
 
 ### Provider Management
-![Providers](screenshots/gestion_fournisseurs.jpg)
-
-
-### Users Management
-![Users](screenshots/gestion_utilisateurs.jpg)
-
-
-### Reports Page
-![Reports 1](screenshots/page_rapports.jpg)
-![Reports 2](screenshots/interface_impression.jpg)
+![Manage Providers](screenshots/16_gestion_fournisseurs.jpg)
 
 
 ## Credentials
@@ -72,10 +80,10 @@ Admin User :
 2. **Move files to the root folder** of your server (e.g., for XAMPP, the location is `C:\xampp\htdocs\InventorySystem`).
 3. **Set up the database**:
    - Open PhpMyAdmin from your local application server.
-   - Create a new database named `stock`.
-   - Import the `stock.sql` file from the `database` folder into the `stock` database.
+   - Create a new database named `stock_management`.
+   - Import the `stock_management.sql` file from the `database` folder into the `stock` database.
 4. **Start Apache and MySQL** on your application server's control panel.
-5. **Access the system**: Go to `http://localhost/InventorySystem/` in your browser.
+5. **Access the system**: Go to `http://localhost/inventory_management/` in your browser.
 
 ## Requirements
 
@@ -87,7 +95,6 @@ Admin User :
 
 - **Original Source Code**: Placeholder for the original source.
 - **Framework**: CodeIgniter - Web Framework.
-- **Theme**: AdminLTE - Dashboard and Admin Theme.
 
 ---
 
