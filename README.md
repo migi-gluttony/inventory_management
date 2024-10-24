@@ -32,7 +32,7 @@ This Inventory Management System allows you to efficiently manage products, user
 ![Home Page2](screenshots/2_page_accueil.jpg)
 ![Home Page3](screenshots/3_page_accueil.png)
 ![Home Page4](screenshots/4_page_accueil.jpg)
-![Home Page4](screenshots/5_page_accueil.jpg)
+![Home Page5](screenshots/5_page_accueil.png)
 
 ### Login Page
 ![Login Page](screenshots/6_page_de_connexion.png)
@@ -91,7 +91,7 @@ Admin User :
 
 ## Requirements
 
-- **PHP** version 8.0.0 or newer (recommended).
+- **PHP** version 8.0.0 or newer.
 - **Database**: MySQL or compatible.
 - **Application Server**: Choose from LAMP, MAMP, or XAMPP.
 
