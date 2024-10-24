@@ -67,12 +67,12 @@ This Inventory Management System allows you to efficiently manage products, user
 
 Normal User :
 
-  - **Email**: admin@admin.com
+  - **Email**: mohamed@example.com
   - **Password**: password
 
 Admin User :
 
-  - **Email**: admin@admin.com
+  - **Email**: admin@example.com
   - **Password**: password
 
 ## Installation
@@ -81,7 +81,7 @@ Admin User :
     ```bash
     git clone https://github.com/migi-gluttony/inventory_management.git
     ```
-2. **Move files to the root folder** of your server (e.g., for XAMPP, the location is `C:\xampp\htdocs\InventorySystem`).
+2. **Move files to the root folder** of your server (e.g., for XAMPP, the location is `C:\xampp\htdocs\inventory_management`).
 3. **Set up the database**:
    - Open PhpMyAdmin from your local application server.
    - Create a new database named `stock_management`.
@@ -95,10 +95,6 @@ Admin User :
 - **Database**: MySQL or compatible.
 - **Application Server**: Choose from LAMP, MAMP, or XAMPP.
 
-## Resources
-
-- **Original Source Code**: Placeholder for the original source.
-- **Framework**: CodeIgniter - Web Framework.
 
 ---
 
