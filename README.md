@@ -1,12 +1,14 @@
 <h1 align="center"><a href="https://github.com/ronknight/InventorySystem">Inventory Management System</a></h1>
 <h4 align="center">An Inventory System using Bootstrap, JavaScript, MySQL & PHP</h4>
 
-<p align="center">
-  <img src="https://upload.wikimedia.org/wikipedia/commons/b/b2/Bootstrap_logo.svg" alt="Bootstrap" width="50" height="50"/>
-  <img src="https://upload.wikimedia.org/wikipedia/commons/6/6a/JavaScript-logo.png" alt="JavaScript" width="50" height="50"/>
-  <img src="https://upload.wikimedia.org/wikipedia/commons/6/62/MySQL.svg" alt="MySQL" width="50" height="50"/>
-  <img src="https://upload.wikimedia.org/wikipedia/commons/2/27/PHP-logo.svg" alt="PHP" width="50" height="50"/>
-</p>
+<h3 align="center">
+  <img
+    alt="Image of a keycap with the letter K on it in pink tones"
+    title="Kanata"
+    height="160"
+    src="design/images/favicon/android-chrome-512x512.png"
+  />
+</h3>
 
 # Inventory Management System
 
