@@ -1,9 +1,9 @@
-<h1 align="center"><a href="https://github.com/ronknight/InventorySystem">Inventory Management System</a></h1>
+<h1 align="center"><a href="https://github.com/migi-gluttony/inventory_management">Inventory Management System</a></h1>
 
 <h3 align="center">
   <img
-    alt="Image of a keycap with the letter K on it in pink tones"
-    title="Kanata"
+    alt="I"
+    title="I"
     height="160"
     src="design/images/favicon/android-chrome-512x512.png"
   />
