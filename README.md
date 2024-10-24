@@ -1,5 +1,4 @@
 <h1 align="center"><a href="https://github.com/ronknight/InventorySystem">Inventory Management System</a></h1>
-<h4 align="center">An Inventory System using Bootstrap, JavaScript, MySQL & PHP</h4>
 
 <h3 align="center">
   <img
@@ -9,6 +8,8 @@
     src="design/images/favicon/android-chrome-512x512.png"
   />
 </h3>
+
+<h4 align="center">An Inventory System using Bootstrap, JavaScript, MySQL & PHP</h4>
 
 # Inventory Management System
 
@@ -31,6 +32,7 @@ This Inventory Management System allows you to efficiently manage products, user
 ![Home Page2](screenshots/2_page_accueil.jpg)
 ![Home Page3](screenshots/3_page_accueil.png)
 ![Home Page4](screenshots/4_page_accueil.jpg)
+![Home Page4](screenshots/5_page_accueil.jpg)
 
 ### Login Page
 ![Login Page](screenshots/6_page_de_connexion.png)
