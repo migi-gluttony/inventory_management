@@ -21,28 +21,34 @@ This Inventory Management System allows you to efficiently manage products, user
 
 
 ### Login
-![Login](screenshots/login.png)
+![Login](screenshots/page_de_connexion.jpg)
+
 
 ### Dashboard
-![Dashboard](screenshots/dashboard.png)
+![Dashboard](screenshots/tableau_bord.jpg)
+
 
 ### Product Management
-![Products](screenshots/products.png)
+![Products 1](screenshots/page_produits.jpg)
+![Products 2](screenshots/formulaire_modification.jpg)
+
 
 ### Add Product
-![Add Product](screenshots/add_product.png)
+![Add Product](screenshots/page_ajout_produit.jpg)
 
-### Edit Product Modal
-![Edit Product](screenshots/edit_product.png)
 
 ### Provider Management
-![Providers](screenshots/providers.png)
+![Providers](screenshots/gestion_fournisseurs.jpg)
+
+
+### Users Management
+![Users](screenshots/gestion_utilisateurs.jpg)
+
 
 ### Reports Page
-![Reports](screenshots/reports.png)
+![Reports 1](screenshots/page_rapports.jpg)
+![Reports 2](screenshots/interface_impression.jpg)
 
-### Export Report
-![Export Report](screenshots/export_report.png)
 
 ## Credentials
 
