@@ -1,8 +1,13 @@
 <?php
-session_start();
-if (session_status() == PHP_SESSION_NONE) {
-  session_start();
-};
+
+// to know which page you're in for the left navbar highlight
+
+$current_page = 'add_product';
+
+// Include the database connection file
+
+include 'db_connection.php';
+
 
 // Check if the user is logged in and is NOT an admin
 if (!isset($_SESSION['user_id']) || $_SESSION['is_admin']) {
@@ -16,23 +21,6 @@ if (!isset($_SESSION['user_id'])) {
     exit();
 }
 
-
-
-$current_page = 'add_product';
-
-// Database connection
-$servername = "localhost";
-$username = "root";  // default XAMPP username
-$password = "";      // default XAMPP password (empty)
-$dbname = "stock_management";  // your database name
-
-// Create connection
-$conn = new mysqli($servername, $username, $password, $dbname);
-
-// Check connection
-if ($conn->connect_error) {
-    die("Connection failed: " . $conn->connect_error);
-}
 
 $message = ''; // Variable to store success or error messages
 // Check if the form is submitted

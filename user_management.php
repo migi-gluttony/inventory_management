@@ -1,10 +1,10 @@
 <?php
 
-session_start();
+// Include the database connection file
 
-if (session_status() == PHP_SESSION_NONE) {
-    session_start();
-};
+include 'db_connection.php';
+
+
 // Check if the user is logged in and is an admin
 if (!isset($_SESSION['user_id']) || !$_SESSION['is_admin']) {
     // Redirect non-admin users or guests to the dashboard
@@ -14,17 +14,7 @@ if (!isset($_SESSION['user_id']) || !$_SESSION['is_admin']) {
 
 
 
-// Database connection
-$host = 'localhost';
-$db = 'stock_management';
-$user = 'root';
-$pass = '';
 
-$conn = new mysqli($host, $user, $pass, $db);
-
-if ($conn->connect_error) {
-    die("Connection failed: " . $conn->connect_error);
-}
 
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $action = $_POST['action'];

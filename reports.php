@@ -1,17 +1,26 @@
 <?php
+// to know which page you're in for the left navbar highlight
+
 $current_page = 'reports';
 
-// Database connection
-$host = 'localhost';
-$db = 'stock_management';
-$user = 'root';
-$pass = '';
 
-$conn = new mysqli($host, $user, $pass, $db);
+// Include the database connection file
 
-if ($conn->connect_error) {
-    die("Connection failed: " . $conn->connect_error);
+include 'db_connection.php';
+
+
+
+// Check if the user is logged in and is NOT an admin
+if (!isset($_SESSION['user_id']) || $_SESSION['is_admin']) {
+  // Redirect admin users to the user management page
+  header("Location: user_management.php");
+  exit();
 }
+if (!isset($_SESSION['user_id'])) {
+  header("Location: sign-in.php");
+  exit();
+}
+
 
 // Fetching report based on selected type
 $reportType = isset($_POST['report_type']) ? $_POST['report_type'] : '';

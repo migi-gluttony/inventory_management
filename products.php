@@ -1,19 +1,21 @@
 <?php
-session_start();
 
-if (session_status() == PHP_SESSION_NONE) {
-  session_start();
-};
+// to know which page you're in for the left navbar highlight
+
+$current_page = 'products';
+
+// Include the database connection file
+
+include 'db_connection.php';
+
+
+
 // Check if the user is logged in and is NOT an admin
 if (!isset($_SESSION['user_id']) || $_SESSION['is_admin']) {
   // Redirect admin users to the user management page
   header("Location: user_management.php");
   exit();
 }
-
-
-
-
 if (!isset($_SESSION['user_id'])) {
   header("Location: sign-in.php");
   exit();
@@ -24,23 +26,9 @@ if (!isset($_SESSION['user_id'])) {
 
 
 
-ini_set('display_errors', 1);
-ini_set('display_startup_errors', 1);
-error_reporting(E_ALL);
 
-$current_page = 'products';
 
-// Database connection
-$host = 'localhost';
-$db = 'stock_management';
-$user = 'root';
-$pass = '';
 
-$conn = new mysqli($host, $user, $pass, $db);
-
-if ($conn->connect_error) {
-  die("Connection failed: " . $conn->connect_error);
-}
 
 // Handle form submissions
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {

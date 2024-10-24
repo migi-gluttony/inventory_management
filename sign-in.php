@@ -1,5 +1,8 @@
 <?php
-session_start();
+
+// Include the database connection file
+
+include 'db_connection.php';
 
 // Redirect to dashboard if already logged in
 if (isset($_SESSION['user_id'])) {
@@ -12,20 +15,7 @@ $error_message = "";
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
     // Database connection
 
-$servername = "localhost";
-$username = "root";  // default XAMPP username
-$password = "";      // default XAMPP password (empty)
-$dbname = "stock_management";  // your database name
 
-// Create
-
-    // Create connection
-    $conn = new mysqli($servername, $username, $password, $dbname);
-
-    // Check connection
-    if ($conn->connect_error) {
-        die("Connection failed: " . $conn->connect_error);
-    }
     
     $email = $_POST['email'];
     $password = $_POST['password'];
@@ -44,7 +34,7 @@ $dbname = "stock_management";  // your database name
           
           // Redirect based on user role
           if ($user['is_admin']) {
-              header("Location: user_management.php");  // Admin user goes to user management
+              header("Location: management.php");  // Admin user goes to user management
           } else {
               header("Location: dashboard.php");  // Normal user goes to dashboard
           }

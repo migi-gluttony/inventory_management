@@ -1,20 +1,15 @@
 <?php
-session_start();
+
+// Include the database connection file
+
+include 'db_connection.php';
+
+
 if (!isset($_SESSION['user_id']) || !$_SESSION['is_admin']) {
     header("Location: dashboard.php");
     exit();
 }
 
-// Database connection
-$host = 'localhost';
-$db = 'stock_management';
-$user = 'root';
-$pass = '';
-
-$conn = new mysqli($host, $user, $pass, $db);
-if ($conn->connect_error) {
-    die("Connection failed: " . $conn->connect_error);
-}
 
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $action = $_POST['action'];

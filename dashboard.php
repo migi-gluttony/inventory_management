@@ -1,13 +1,13 @@
 <?php
 
+// to know which page you're in for the left navbar highlight
+
 $current_page = 'dashboard';
 
+// Include the database connection file
 
+include 'db_connection.php';
 
-session_start();
-if (session_status() == PHP_SESSION_NONE) {
-  session_start();
-}
 
 // Check if the user is logged in and is NOT an admin
 if (!isset($_SESSION['user_id']) || $_SESSION['is_admin']) {
@@ -21,16 +21,6 @@ if (!isset($_SESSION['user_id'])) {
   exit();
 }
 
-// Database connection
-$host = 'localhost';
-$db = 'stock_management';
-$user = 'root';
-$pass = '';
-
-$conn = new mysqli($host, $user, $pass, $db);
-if ($conn->connect_error) {
-  die("Connection failed: " . $conn->connect_error);
-}
 
 // Fetch counts for providers, products, and users
 $providersCount = $conn->query("SELECT COUNT(*) AS count FROM Providers")->fetch_assoc()['count'];
