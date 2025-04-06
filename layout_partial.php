@@ -32,7 +32,7 @@
                     <!-- Ajout des nouveaux liens de menu -->
                     <li class="nav-item">
                         <a class="nav-link d-flex align-items-center <?php echo ($current_page === 'orders') ? 'active' : ''; ?>" href="orders.php">
-                            <img src="design/images/file-earmark-text.svg" alt="Orders" width="16" height="16">
+                            <img src="design/images/pricetags-outline.svg" alt="Orders" width="16" height="16">
                             Orders
                         </a>
                     </li>
