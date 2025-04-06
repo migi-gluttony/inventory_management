@@ -26,7 +26,10 @@ if (!isset($_SESSION['user_id'])) {
 $providersCount = $conn->query("SELECT COUNT(*) AS count FROM Providers")->fetch_assoc()['count'];
 $productsCount = $conn->query("SELECT COUNT(*) AS count FROM Products WHERE is_deleted = FALSE")->fetch_assoc()['count'];
 $usersCount = $conn->query("SELECT COUNT(*) AS count FROM Users")->fetch_assoc()['count'];
-
+$ordersCount = $conn->query("SELECT COUNT(*) AS count FROM orders")->fetch_assoc()['count'] ?? 0;
+$invoicesCount = $conn->query("SELECT COUNT(*) AS count FROM invoices")->fetch_assoc()['count'] ?? 0;
+$totalInvoiced = $conn->query("SELECT SUM(total_amount) AS total FROM invoices")->fetch_assoc()['total'] ?? 0;
+$pendingPayments = $conn->query("SELECT COUNT(*) AS count FROM invoices WHERE payment_status = 'pending'")->fetch_assoc()['count'] ?? 0;
 // Fetch total stock and total capital of products
 $totalStock = $conn->query("SELECT SUM(stock) AS total FROM Products WHERE is_deleted = FALSE")->fetch_assoc()['total'] ?? 0;
 $totalCapital = $conn->query("SELECT SUM(price * stock) AS total FROM Products WHERE is_deleted = FALSE")->fetch_assoc()['total'] ?? 0;
@@ -148,73 +151,72 @@ $conn->close();
         <h1 class="h2">Dashboard</h1>
       </div>
 
+      <div class="col-12 col-sm-6 col-xl-3">
+        <div class="dashboard-card stat-card p-3" style="background-color: #4B0082;"> <!-- Indigo -->
+          <h3 class="fs-5 mb-1 text-white">Total Orders</h3>
+          <p class="fs-2 mb-0 text-white"><?php echo $ordersCount; ?></p>
+        </div>
+      </div>
+      <div class="col-12 col-sm-6 col-xl-3">
+        <div class="dashboard-card stat-card p-3" style="background-color: #8A2BE2;"> <!-- Blue Violet -->
+          <h3 class="fs-5 mb-1 text-white">Total Invoices</h3>
+          <p class="fs-2 mb-0 text-white"><?php echo $invoicesCount; ?></p>
+        </div>
+      </div>
+      <div class="col-12 col-sm-6 col-xl-3">
+        <div class="dashboard-card stat-card p-3" style="background-color: #9370DB;"> <!-- Medium Purple -->
+          <h3 class="fs-5 mb-1 text-white">Total Invoiced</h3>
+          <p class="fs-2 mb-0 text-white"><?php echo number_format((float)$totalInvoiced, 2, '.', ','); ?> MAD</p>
+        </div>
+      </div>
+      <div class="col-12 col-sm-6 col-xl-3">
+        <div class="dashboard-card stat-card p-3" style="background-color: #BA55D3;"> <!-- Medium Orchid -->
+          <h3 class="fs-5 mb-1 text-white">Pending Payments</h3>
+          <p class="fs-2 mb-0 text-white"><?php echo $pendingPayments; ?></p>
+        </div>
+      </div>
+
+
       <div class="row g-4 mb-4">
-        <div class="col-12 col-sm-6 col-xl-3">
-          <div class="dashboard-card stat-card p-3" style="background-color: #222831;"> <!-- Darker Gray -->
-            <h3 class="fs-5 mb-1 text-white">Total Products</h3>
-            <p class="fs-2 mb-0 text-white"><?php echo $productsCount; ?></p>
-          </div>
-        </div>
-        <div class="col-12 col-sm-6 col-xl-3">
-          <div class="dashboard-card stat-card p-3" style="background-color: #393E46;"> <!-- Dark Gray -->
-            <h3 class="fs-5 mb-1 text-white">Total Stock</h3>
-            <p class="fs-2 mb-0 text-white"><?php echo $totalStock; ?></p>
-          </div>
-        </div>
-        <div class="col-12 col-sm-6 col-xl-3">
-          <div class="dashboard-card stat-card p-3" style="background-color: #00ADB5;"> <!-- Teal -->
-            <h3 class="fs-5 mb-1 text-white">Total Users</h3>
-            <p class="fs-2 mb-0 text-white"><?php echo $usersCount; ?></p>
-          </div>
-        </div>
-        <div class="col-12 col-sm-6 col-xl-3">
-          <div class="dashboard-card stat-card p-3" style="background-color: #EEEEEE;"> <!-- Light Gray -->
-            <h3 class="fs-5 mb-1 text-dark">Total Providers</h3>
-            <p class="fs-2 mb-0 text-dark"><?php echo $providersCount; ?></p>
-          </div>
-        </div>
-
-
-        <div class="row g-4 mb-4">
-          <div class="col-12 col-lg-8">
-            <div class="dashboard-card p-3">
-              <h2 class="h4 mb-3">Products by Provider</h2>
-              <div class="chart-container">
-                <canvas id="productsByProviderChart"></canvas>
-              </div>
-            </div>
-          </div>
-          <div class="col-12 col-lg-4">
-            <div class="dashboard-card p-3">
-              <h2 class="h4 mb-3">Total Capital in Stock</h2>
-              <p class="fs-1 text-center mb-0"><?php echo number_format((float)$totalCapital, 2, '.', ','); ?> MAD</p>
+        <div class="col-12 col-lg-8">
+          <div class="dashboard-card p-3">
+            <h2 class="h4 mb-3">Products by Provider</h2>
+            <div class="chart-container">
+              <canvas id="productsByProviderChart"></canvas>
             </div>
           </div>
         </div>
+        <div class="col-12 col-lg-4">
+          <div class="dashboard-card p-3">
+            <h2 class="h4 mb-3">Total Capital in Stock</h2>
+            <p class="fs-1 text-center mb-0"><?php echo number_format((float)$totalCapital, 2, '.', ','); ?> MAD</p>
+          </div>
+        </div>
+      </div>
 
-        <div class="dashboard-card p-3 mb-4">
-          <h2 class="h4 mb-3">Last Products Added</h2>
-          <div class="table-container">
-            <table class="table table-hover">
-              <thead>
+      <div class="dashboard-card p-3 mb-4">
+        <h2 class="h4 mb-3">Last Products Added</h2>
+        <div class="table-container">
+          <table class="table table-hover">
+            <thead>
+              <tr>
+                <th>Name</th>
+                <th>Price</th>
+                <th>Date Added</th>
+              </tr>
+            </thead>
+            <tbody>
+              <?php foreach ($lastProductsData as $product): ?>
                 <tr>
-                  <th>Name</th>
-                  <th>Price</th>
-                  <th>Date Added</th>
+                  <td><?php echo htmlspecialchars($product['name']); ?></td>
+                  <td><?php echo number_format((float)$product['price'], 2, '.', ','); ?> MAD</td>
+                  <td><?php echo date("Y-m-d H:i:s", strtotime($product['date_added'])); ?></td>
                 </tr>
-              </thead>
-              <tbody>
-                <?php foreach ($lastProductsData as $product): ?>
-                  <tr>
-                    <td><?php echo htmlspecialchars($product['name']); ?></td>
-                    <td><?php echo number_format((float)$product['price'], 2, '.', ','); ?> MAD</td>
-                    <td><?php echo date("Y-m-d H:i:s", strtotime($product['date_added'])); ?></td>
-                  </tr>
-                <?php endforeach; ?>
-              </tbody>
-            </table>
-          </div>
+              <?php endforeach; ?>
+            </tbody>
+          </table>
         </div>
+      </div>
     </main>
   </div>
   </div>

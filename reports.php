@@ -12,13 +12,13 @@ include 'db_connection.php';
 
 // Check if the user is logged in and is NOT an admin
 if (!isset($_SESSION['user_id']) || $_SESSION['is_admin']) {
-  // Redirect admin users to the user management page
-  header("Location: user_management.php");
-  exit();
+    // Redirect admin users to the user management page
+    header("Location: user_management.php");
+    exit();
 }
 if (!isset($_SESSION['user_id'])) {
-  header("Location: sign-in.php");
-  exit();
+    header("Location: sign-in.php");
+    exit();
 }
 
 
@@ -62,6 +62,30 @@ if ($reportType == 'products') {
     $reportData = '<h2>Providers Report</h2><table class="table"><tr><th>ID</th><th>Name</th><th>Contact Info</th><th>Address</th></tr>';
     while ($row = $result->fetch_assoc()) {
         $reportData .= "<tr><td>{$row['id']}</td><td>{$row['name']}</td><td>{$row['contact_info']}</td><td>{$row['address']}</td></tr>";
+    }
+    $reportData .= '</table>';
+}
+
+
+elseif ($reportType == 'orders') {
+    $sql = "SELECT o.id, o.order_date, o.status, u.name AS user_name 
+            FROM orders o 
+            JOIN users u ON o.user_id = u.id";
+    $result = $conn->query($sql);
+    $reportData = '<h2>Orders Report</h2><table class="table"><tr><th>ID</th><th>Date</th><th>Status</th><th>User</th></tr>';
+    while ($row = $result->fetch_assoc()) {
+        $reportData .= "<tr><td>{$row['id']}</td><td>{$row['order_date']}</td><td>{$row['status']}</td><td>{$row['user_name']}</td></tr>";
+    }
+    $reportData .= '</table>';
+} 
+elseif ($reportType == 'invoices') {
+    $sql = "SELECT i.id, i.invoice_date, i.total_amount, i.payment_status, o.id AS order_id 
+            FROM invoices i 
+            JOIN orders o ON i.order_id = o.id";
+    $result = $conn->query($sql);
+    $reportData = '<h2>Invoices Report</h2><table class="table"><tr><th>ID</th><th>Date</th><th>Total Amount</th><th>Payment Status</th><th>Order ID</th></tr>';
+    while ($row = $result->fetch_assoc()) {
+        $reportData .= "<tr><td>{$row['id']}</td><td>{$row['invoice_date']}</td><td>{$row['total_amount']} MAD</td><td>{$row['payment_status']}</td><td>{$row['order_id']}</td></tr>";
     }
     $reportData .= '</table>';
 }
@@ -148,6 +172,10 @@ if ($reportType == 'products') {
                 <button name="report_type" value="deleted_products" class="btn btn-primary report-button">Deleted Products Report</button>
                 <button name="report_type" value="users" class="btn btn-primary report-button">Users Report</button>
                 <button name="report_type" value="providers" class="btn btn-primary report-button">Providers Report</button>
+                <button name="report_type" value="orders" class="btn btn-primary report-button">Orders Report</button>
+                <button name="report_type" value="invoices" class="btn btn-primary report-button">Invoices Report</button>
+
+
             </form>
 
             <?php if ($reportData): ?>
