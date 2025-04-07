@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Oct 24, 2024 at 03:51 AM
+-- Generation Time: Apr 07, 2025 at 07:15 PM
 -- Server version: 10.4.32-MariaDB
 -- PHP Version: 8.2.12
 
@@ -18,8 +18,69 @@ SET time_zone = "+00:00";
 /*!40101 SET NAMES utf8mb4 */;
 
 --
--- Database: `stock_management`
+-- Database: `inventory_management`
 --
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `invoices`
+--
+
+CREATE TABLE `invoices` (
+  `id` int(11) NOT NULL,
+  `invoice_date` datetime NOT NULL DEFAULT current_timestamp(),
+  `total_amount` decimal(10,2) NOT NULL,
+  `payment_status` varchar(50) NOT NULL DEFAULT 'pending',
+  `order_id` int(11) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Dumping data for table `invoices`
+--
+
+INSERT INTO `invoices` (`id`, `invoice_date`, `total_amount`, `payment_status`, `order_id`) VALUES
+(1, '2025-04-06 23:23:20', 2969.67, 'paid', 1);
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `orders`
+--
+
+CREATE TABLE `orders` (
+  `id` int(11) NOT NULL,
+  `order_date` datetime NOT NULL DEFAULT current_timestamp(),
+  `status` varchar(50) NOT NULL DEFAULT 'pending',
+  `user_id` int(11) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Dumping data for table `orders`
+--
+
+INSERT INTO `orders` (`id`, `order_date`, `status`, `user_id`) VALUES
+(1, '2025-04-06 23:18:39', 'pending', 38);
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `order_items`
+--
+
+CREATE TABLE `order_items` (
+  `order_id` int(11) NOT NULL,
+  `product_id` int(11) NOT NULL,
+  `quantity` int(11) NOT NULL,
+  `price` decimal(10,2) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Dumping data for table `order_items`
+--
+
+INSERT INTO `order_items` (`order_id`, `product_id`, `quantity`, `price`) VALUES
+(1, 38, 33, 89.99);
 
 -- --------------------------------------------------------
 
@@ -43,7 +104,7 @@ CREATE TABLE `products` (
 --
 
 INSERT INTO `products` (`id`, `name`, `price`, `stock`, `date_added`, `date_modified`, `provider_id`, `is_deleted`) VALUES
-(38, 'Office Chair', 89.99, 50, '2024-10-09 18:54:32', '2024-10-09 18:54:32', 1, 0),
+(38, 'Office Chair', 89.99, 17, '2024-10-09 18:54:32', '2025-04-06 23:18:39', 1, 0),
 (39, 'Laptop Stand', 29.99, 150, '2024-10-09 18:54:32', '2024-10-09 18:54:32', 2, 0),
 (40, 'Eco-Friendly Notebook', 12.50, 200, '2024-10-09 18:54:32', '2024-10-09 18:54:32', 3, 0),
 (41, 'Wireless Mouse', 25.99, 120, '2024-10-09 18:54:32', '2024-10-09 18:54:32', 4, 0),
@@ -184,7 +245,8 @@ INSERT INTO `products` (`id`, `name`, `price`, `stock`, `date_added`, `date_modi
 (225, 'Sodium Bicarbonate (Baking Soda)', 3.00, 300, '2024-10-09 19:03:21', '2024-10-09 19:03:21', 6, 0),
 (226, 'Ammonium Hydroxide', 14.50, 40, '2024-10-09 19:03:21', '2024-10-09 19:03:21', 6, 0),
 (227, 'Calcium Carbonate', 6.25, 180, '2024-10-09 19:03:21', '2024-10-09 19:03:21', 6, 0),
-(228, 'Hydrogen Peroxide', 7.99, 120, '2024-10-09 19:03:21', '2024-10-09 19:03:21', 6, 0);
+(228, 'Hydrogen Peroxide', 7.99, 120, '2024-10-09 19:03:21', '2024-10-09 19:03:21', 6, 0),
+(229, 'kjhgfd', 22.00, 22, '2025-04-06 23:57:13', '2025-04-06 23:57:13', 3, 0);
 
 -- --------------------------------------------------------
 
@@ -214,6 +276,20 @@ INSERT INTO `providers` (`id`, `name`, `contact_info`, `address`) VALUES
 -- --------------------------------------------------------
 
 --
+-- Table structure for table `reports`
+--
+
+CREATE TABLE `reports` (
+  `id` int(11) NOT NULL,
+  `generation_date` datetime NOT NULL DEFAULT current_timestamp(),
+  `report_type` varchar(50) NOT NULL,
+  `content` text NOT NULL,
+  `user_id` int(11) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+-- --------------------------------------------------------
+
+--
 -- Table structure for table `users`
 --
 
@@ -233,11 +309,35 @@ CREATE TABLE `users` (
 
 INSERT INTO `users` (`id`, `name`, `password_hash`, `email`, `date_added`, `date_modified`, `is_admin`) VALUES
 (29, 'Admin User', '$2y$10$PGmTruQD2abK3KYzZfP4IeQ0OhMyzlx5TeIcoKAuhYK/yeCj5ZbvS', 'admin@example.com', '2024-10-09 18:11:40', '2024-10-24 02:45:08', 1),
-(30, 'Mohamed', '$2y$10$92IXUNpkjO0rOQ5byMi.Ye4oKoEa3Ro9llC/.og/at2.uheWG/igi', 'mohamed@example.com', '2024-10-09 18:11:40', '2024-10-24 02:45:43', 0);
+(30, 'Mohamed', '$2y$10$92IXUNpkjO0rOQ5byMi.Ye4oKoEa3Ro9llC/.og/at2.uheWG/igi', 'mohamed@example.com', '2024-10-09 18:11:40', '2024-10-24 02:45:43', 0),
+(37, 'Admin Recovery', '$2y$10$PGmTruQD2abK3KYzZfP4IeQ0OhMyzlx5TeIcoKAuhYK/yeCj5ZbvS', 'admin@recovery.com', '2025-04-06 23:05:03', '2025-04-06 23:05:03', 1),
+(38, 'mohamed', '$2y$10$fJl65UX2ZAD5Gk7M3dae4Oi9/nxPqh8P1gq4ykIsPsfArBLaQfHdK', 'mohamed@email.com', '2025-04-06 23:08:50', '2025-04-06 23:08:50', 0),
+(39, 'hicham', '$2y$10$T3uNmHA218t6j8ymR6ambOIPUt/udfNzvKNi.vwdMnPoFPpUddxcy', 'hicham@email.com', '2025-04-06 23:11:29', '2025-04-06 23:11:29', 1);
 
 --
 -- Indexes for dumped tables
 --
+
+--
+-- Indexes for table `invoices`
+--
+ALTER TABLE `invoices`
+  ADD PRIMARY KEY (`id`),
+  ADD KEY `order_id` (`order_id`);
+
+--
+-- Indexes for table `orders`
+--
+ALTER TABLE `orders`
+  ADD PRIMARY KEY (`id`),
+  ADD KEY `user_id` (`user_id`);
+
+--
+-- Indexes for table `order_items`
+--
+ALTER TABLE `order_items`
+  ADD PRIMARY KEY (`order_id`,`product_id`),
+  ADD KEY `product_id` (`product_id`);
 
 --
 -- Indexes for table `products`
@@ -255,6 +355,13 @@ ALTER TABLE `providers`
   ADD UNIQUE KEY `name` (`name`);
 
 --
+-- Indexes for table `reports`
+--
+ALTER TABLE `reports`
+  ADD PRIMARY KEY (`id`),
+  ADD KEY `user_id` (`user_id`);
+
+--
 -- Indexes for table `users`
 --
 ALTER TABLE `users`
@@ -266,10 +373,22 @@ ALTER TABLE `users`
 --
 
 --
+-- AUTO_INCREMENT for table `invoices`
+--
+ALTER TABLE `invoices`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+
+--
+-- AUTO_INCREMENT for table `orders`
+--
+ALTER TABLE `orders`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+
+--
 -- AUTO_INCREMENT for table `products`
 --
 ALTER TABLE `products`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=229;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=230;
 
 --
 -- AUTO_INCREMENT for table `providers`
@@ -278,20 +397,51 @@ ALTER TABLE `providers`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
 
 --
+-- AUTO_INCREMENT for table `reports`
+--
+ALTER TABLE `reports`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+
+--
 -- AUTO_INCREMENT for table `users`
 --
 ALTER TABLE `users`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=37;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=40;
 
 --
 -- Constraints for dumped tables
 --
 
 --
+-- Constraints for table `invoices`
+--
+ALTER TABLE `invoices`
+  ADD CONSTRAINT `invoices_ibfk_1` FOREIGN KEY (`order_id`) REFERENCES `orders` (`id`);
+
+--
+-- Constraints for table `orders`
+--
+ALTER TABLE `orders`
+  ADD CONSTRAINT `orders_ibfk_1` FOREIGN KEY (`user_id`) REFERENCES `users` (`id`);
+
+--
+-- Constraints for table `order_items`
+--
+ALTER TABLE `order_items`
+  ADD CONSTRAINT `order_items_ibfk_1` FOREIGN KEY (`order_id`) REFERENCES `orders` (`id`),
+  ADD CONSTRAINT `order_items_ibfk_2` FOREIGN KEY (`product_id`) REFERENCES `products` (`id`);
+
+--
 -- Constraints for table `products`
 --
 ALTER TABLE `products`
   ADD CONSTRAINT `products_ibfk_1` FOREIGN KEY (`provider_id`) REFERENCES `providers` (`id`);
+
+--
+-- Constraints for table `reports`
+--
+ALTER TABLE `reports`
+  ADD CONSTRAINT `reports_ibfk_1` FOREIGN KEY (`user_id`) REFERENCES `users` (`id`);
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

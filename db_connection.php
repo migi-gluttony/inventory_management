@@ -6,7 +6,7 @@ if (session_status() == PHP_SESSION_NONE) {
 
 // Database connection
 $host = 'localhost';
-$db = 'stock_management';
+$db = 'inventory_management';
 $user = 'root';
 $pass = '';
 
