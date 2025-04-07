@@ -52,6 +52,12 @@
                             </a>
                         </li>
                         <li class="nav-item">
+                            <a class="nav-link d-flex align-items-center <?php echo ($current_page === 'deleted_products') ? 'active' : ''; ?>" href="deleted_products.php">
+                                <img src="design/images/trash.svg" alt="Deleted Products" width="16" height="16">
+                                Deleted Products
+                            </a>
+                        </li>
+                        <li class="nav-item">
                             <a class="nav-link d-flex align-items-center <?php echo ($current_page === 'orders') ? 'active' : ''; ?>" href="orders.php">
                                 <img src="design/images/pricetags-outline.svg" alt="Orders" width="16" height="16">
                                 Orders
@@ -61,12 +67,6 @@
                             <a class="nav-link d-flex align-items-center <?php echo ($current_page === 'invoices') ? 'active' : ''; ?>" href="invoices.php">
                                 <img src="design/images/receipt.svg" alt="Invoices" width="16" height="16">
                                 Invoices
-                            </a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link d-flex align-items-center <?php echo ($current_page === 'deleted_products') ? 'active' : ''; ?>" href="deleted_products.php">
-                                <img src="design/images/trash.svg" alt="Deleted Products" width="16" height="16">
-                                Deleted Products
                             </a>
                         </li>
                         <li class="nav-item">
